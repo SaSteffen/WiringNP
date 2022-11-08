@@ -154,12 +154,14 @@ static int getAllwinnerBoardID(char* boardId, int boardIdMaxLen )
     unsigned long n, i, j;
     char lineUntrim[1024], line[1024], *p;
     const char* sunxi_board_id_fieldname = "sunxi_board_id";
+	const char* hardcoded_board_id_nanopi_neo = "1(0)";
     FILE *f;
     int ret = -1;
 
     if (!(f = fopen("/sys/class/sunxi_info/sys_info", "r"))) {
-        LOGE("open /sys/class/sunxi_info/sys_info failed.");
-        return -1;
+        LOGE("open /sys/class/sunxi_info/sys_info failed.\n Defaulting to NaoPi Neo\n");
+		strncpy(boardId, hardcoded_board_id_nanopi_neo, boardIdMaxLen-1);
+        return 0;
     }
 
     while (!feof(f)) {
