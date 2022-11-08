@@ -87,11 +87,11 @@ check_make_ok
 ${PFX}make install
 check_make_ok
 
-# echo
-# echo "Examples"
-# cd ../examples
-# make
-# cd ..
+echo
+echo "GPIO switcher"
+cd ../gpio_switcher
+make
+cd ..
 
 echo
 echo All Done.
